@@ -1,0 +1,28 @@
+site_name: My Docs
+
+theme:
+  name: material
+  language: ja
+
+plugins:
+  - with-pdf:
+      author: Author
+      copyright: CopyRight
+      # cover: true
+      # cover_title: TITLE TEXT
+      # cover_subtitle: SUBTITLE TEXT
+      custom_template_path: custom_template
+      debug_html: false
+      toc_title: 目次
+      use_directory_urls: false
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences 
+
+
+extra_javascript:
+    - js/custom.js
+extra_css:
+   - css/custom.css

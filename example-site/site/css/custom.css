@@ -1,0 +1,16 @@
+:root > * {
+    --md-primary-fg-color:        #177e7e;
+    --md-primary-fg-color--light: #30acac;
+    --md-primary-fg-color--dark:  #0b6969;
+  }
+
+
+h1 {
+    border-bottom: 2px solid var(--md-primary-fg-color) !important;
+}
+h2 {
+    border-bottom: 1px solid var(--md-primary-fg-color) !important;
+}
+h3 {
+    border-bottom: 0.5px solid #eee;
+}
