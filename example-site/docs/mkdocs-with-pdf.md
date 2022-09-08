@@ -1,6 +1,6 @@
 # mkdocs-with-pdf
 
-[mkdocs-with-pdf](https://github.com/try0/mkdocs-with-pdf)を使用して、ドキュメントをPDFとして出力することができます。
+[mkdocs-with-pdf](https://github.com/orzih/mkdocs-with-pdf)を使用して、ドキュメントをPDFとして出力することができます。
 
 
 ## 環境構築
