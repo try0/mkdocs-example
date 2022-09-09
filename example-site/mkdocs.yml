@@ -1,4 +1,9 @@
 site_name: My Docs
+nav:
+  - "index.md"
+  - "mkdocs-with-pdf.md"
+  - "mkdocs-with-pdf-output.md"
+use_directory_urls: false
 
 theme:
   name: material
@@ -14,16 +19,16 @@ plugins:
       custom_template_path: custom_template
       debug_html: false
       toc_title: 目次
-      use_directory_urls: false
       two_columns_level: 3
+      exclude_pages:
+        - mkdocs-with-pdf-output.html
 
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
-  - pymdownx.superfences 
-
+  - pymdownx.superfences
 
 extra_javascript:
-    - js/custom.js
+  - js/custom.js
 extra_css:
-   - css/custom.css
+  - css/custom.css

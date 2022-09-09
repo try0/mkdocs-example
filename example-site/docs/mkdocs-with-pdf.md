@@ -17,7 +17,7 @@ pip install mkdocs-with-pdf
 
 プラグインを有効にする。
 
-```
+```yaml
 plugins:
     - with-pdf
 ```
@@ -25,7 +25,7 @@ plugins:
 
 ## 表紙をつける
 
-```yml
+```yaml
 plugins:
     - with-pdf:
         cover: true
@@ -41,7 +41,7 @@ plugins:
 表紙用のHTMLを差し込むことができます。  
 custom_template_pathで指定したディレクトリー内に、`cover.html`を配置します。
 
-```yml
+```yaml
 plugins:
     - with-pdf:
         cover: true
@@ -139,7 +139,7 @@ article {
 スタイルを拡張する際、要素の構造や、属性等確認したい場合があります。
 オプションを`debug_html: true`とすることで、PDF出力用のHTMLがログ出力されるようになります。
 
-```yml
+```yaml
 plugins:
     - with-pdf:
         debug_html: true
@@ -150,7 +150,7 @@ plugins:
 
 ２カラム構成で出力する見出しレベルを指定することで、そのレベル以下は２カラムで出力されるようになります。
 
-```
+```yaml
 plugins:
     - with-pdf:
       two_columns_level: 3
@@ -186,3 +186,31 @@ Getting startedをクリックします。
 対応ブラウザーと各バージョンを確認します。
 
 ![](img/2022-09-09-19-15-30.png)
+
+---
+
+こんな感じのちょっとしたフローは２カラム構成のほうが無駄なスペースを消費せず見やすい。
+
+
+
+## 特定のページをPDF出力対象から除外する
+
+オプションで、除外したいファイル/ディレクトリを指定します。
+
+MkDocsのオプションで`use_directory_urls: false`としている場合
+
+```yaml
+plugins:
+    - with-pdf:
+      exclude_pages:
+       - 'mkdocks-with-pdf-output.html'
+```
+
+MkDocsのオプションで`use_directory_urls: true`としている場合
+
+```yaml
+plugins:
+    - with-pdf:
+      exclude_pages:
+       - 'mkdocks-with-pdf-output/'
+```
