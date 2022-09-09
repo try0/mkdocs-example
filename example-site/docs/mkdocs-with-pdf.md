@@ -139,3 +139,50 @@ article {
 スタイルを拡張する際、要素の構造や、属性等確認したい場合があります。
 オプションを`debug_html: true`とすることで、PDF出力用のHTMLがログ出力されるようになります。
 
+```yml
+plugins:
+    - with-pdf:
+        debug_html: true
+```
+
+
+## 2カラム構成で出力する
+
+２カラム構成で出力する見出しレベルを指定することで、そのレベル以下は２カラムで出力されるようになります。
+
+```
+plugins:
+    - with-pdf:
+      two_columns_level: 3
+```
+
+
+### Material for MkDocsのサポートブラウザーを確認する
+
+この項は、見出しレベルが３（`###`）なので、２カラム構成で出力されます。
+
+![](img/2022-09-09-19-18-49.png)
+
+---
+
+Material for MkDocsの製品サイトへアクセスします。
+
+![](img/2022-09-09-19-13-06.png)
+
+<div class="triangle"></div>
+
+Getting startedをクリックします。
+
+![](img/2022-09-09-19-13-39.png)
+
+<div class="triangle"></div>
+
+左側のメニューからBrowser supportへ移動します。
+
+![](img/2022-09-09-19-14-39.png)
+
+<div class="triangle"></div>
+
+対応ブラウザーと各バージョンを確認します。
+
+![](img/2022-09-09-19-15-30.png)

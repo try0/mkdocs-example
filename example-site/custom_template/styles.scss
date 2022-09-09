@@ -2,7 +2,6 @@
 $mainColor: #177e7e;
 $subColor: rgba($mainColor, 0.85);
 
-
 // 共通
 html {
     font-size: 20px;
@@ -32,6 +31,14 @@ article {
 img {
     max-width: 16em !important;
     border: solid 1px gray !important;
+}
+
+.triangle {
+    border-top: 1em solid $subColor;
+    border-right: 1em solid transparent;
+    border-left: 1em solid transparent;
+    height: 1em;
+    width: 1em;
 }
 
 // 表紙

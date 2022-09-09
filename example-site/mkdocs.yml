@@ -15,6 +15,7 @@ plugins:
       debug_html: false
       toc_title: 目次
       use_directory_urls: false
+      two_columns_level: 3
 
 markdown_extensions:
   - pymdownx.highlight:
