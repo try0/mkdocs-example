@@ -330,6 +330,8 @@ styles.scss
 
 mkdocs.ymlと同一ディレクトリーに、`pdf_event_hook.py`を配置することで、PDF出力時に処理を拡張することができます。
 
+![](img/2022-09-11-23-28-02.png)
+
 ```python
 def inject_link(html: str, href: str, page: Page, logger: logging) -> str:
 
