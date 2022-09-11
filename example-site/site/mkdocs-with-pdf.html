@@ -279,6 +279,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    各ページにロゴを表示する
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -407,6 +414,13 @@
         <li class="md-nav__item">
   <a href="#pdf_1" class="md-nav__link">
     特定のページをPDF出力対象から除外する
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    各ページにロゴを表示する
   </a>
   
 </li>
@@ -575,6 +589,26 @@ custom_template_pathで指定したディレクトリー内に、<code>cover.htm
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">      </span><span class="nt">exclude_pages</span><span class="p">:</span><span class="w"></span>
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;mkdocks-with-pdf-output/&#39;</span><span class="w"></span>
 </code></pre></div>
+<h2 id="_7">各ページにロゴを表示する</h2>
+<p>特にオプションはないので、スタイルで指定します。
+<a href="https://drafts.csswg.org/css-page/#at-page-rule">CSS Paged Media Module Level 3</a><br />
+styles.scss
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">@page</span><span class="nd">:first</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="k">@top-left</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">        </span><span class="nt">content</span><span class="nd">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="k">@page</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">    </span><span class="k">@top-left</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">        </span><span class="nt">opacity</span><span class="nd">:</span><span class="w"> </span><span class="nc">.6</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">        </span><span class="nt">transform</span><span class="nd">:</span><span class="w"> </span><span class="nt">translateX</span><span class="o">(</span><span class="nt">-150px</span><span class="o">)</span><span class="w"> </span><span class="nt">scale</span><span class="o">(</span><span class="nt">0</span><span class="nc">.3</span><span class="o">);</span><span class="w"></span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">        </span><span class="nt">content</span><span class="nd">:</span><span class="w"> </span><span class="nt">url</span><span class="o">(</span><span class="nt">data</span><span class="nd">:image</span><span class="o">/</span><span class="nt">png</span><span class="o">;</span><span class="nt">base64</span><span class="o">,</span><span class="err">・・・・・</span><span class="o">);</span><span class="w"></span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>表紙をのぞいた各ページの左上にロゴが表示されます。</p>
+<p><img alt="" src="img/2022-09-11-14-47-00.png" /></p>
 
 
 

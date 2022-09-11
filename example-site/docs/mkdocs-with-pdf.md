@@ -247,3 +247,31 @@ plugins:
       exclude_pages:
        - 'mkdocks-with-pdf-output/'
 ```
+
+
+## 各ページにロゴを表示する
+
+特にオプションはないので、スタイルで指定します。
+[CSS Paged Media Module Level 3](https://drafts.csswg.org/css-page/#at-page-rule)  
+styles.scss
+```scss
+
+@page:first {
+    @top-left {
+        content: '';
+    }
+}
+
+@page {
+    @top-left {
+        opacity: .6;
+        transform: translateX(-150px) scale(0.3);
+        content: url(data:image/png;base64,・・・・・);
+    }
+}
+
+```
+
+表紙をのぞいた各ページの左上にロゴが表示されます。
+
+![](img/2022-09-11-14-47-00.png)
