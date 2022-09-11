@@ -288,7 +288,14 @@
       
         <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
-    裏表紙をカスタマイズする
+    裏表紙をつける・カスタマイズする
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    イベントフック
   </a>
   
 </li>
@@ -434,7 +441,14 @@
       
         <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
-    裏表紙をカスタマイズする
+    裏表紙をつける・カスタマイズする
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    イベントフック
   </a>
   
 </li>
@@ -623,7 +637,7 @@ styles.scss
 </code></pre></div></p>
 <p>表紙をのぞいた各ページの左上にロゴが表示されます。</p>
 <p><img alt="" src="img/2022-09-11-14-47-00.png" /></p>
-<h2 id="_8">裏表紙をカスタマイズする</h2>
+<h2 id="_8">裏表紙をつける・カスタマイズする</h2>
 <p>裏表紙用のHTMLを差し込むことができます。<br />
 オプションで<code>back_cover: true</code>を設定し、custom_template_pathで指定したディレクトリー内に、<code>back_cover.html</code>を配置します。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
@@ -658,6 +672,61 @@ styles.scss
 <a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
+<p><img alt="" src="img/2022-09-11-22-37-48.png" /></p>
+<h2 id="_9">イベントフック</h2>
+<p>mkdocs.ymlと同一ディレクトリーに、<code>pdf_event_hook.py</code>を配置して、PDF出力時に以下処理をフックして処理を拡張することができます。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">def</span> <span class="nf">inject_link</span><span class="p">(</span><span class="n">html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">href</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="k">def</span> <span class="nf">pre_js_render</span><span class="p">(</span><span class="n">soup</span><span class="p">:</span> <span class="n">BeautifulSoup</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeautifulSoup</span><span class="p">:</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="k">def</span> <span class="nf">pre_pdf_render</span><span class="p">(</span><span class="n">soup</span><span class="p">:</span> <span class="n">BeautifulSoup</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeautifulSoup</span><span class="p">:</span>
+</code></pre></div>
+<p>裏表紙下部へ、出力時の情報を出力してみます。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">import</span> <span class="nn">logging</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="kn">import</span> <span class="nn">datetime</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="kn">from</span> <span class="nn">mkdocs.structure.pages</span> <span class="kn">import</span> <span class="n">Page</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="k">def</span> <span class="nf">pre_pdf_render</span><span class="p">(</span><span class="n">soup</span><span class="p">:</span> <span class="n">BeautifulSoup</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeautifulSoup</span><span class="p">:</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;(hook on pre_pdf_render)&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>    <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.back-cover-page&#39;</span><span class="p">):</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>        <span class="n">el_main</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>        <span class="n">el_main</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;flex: 1;&#39;</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>        <span class="n">el</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el_main</span><span class="p">)</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>        <span class="n">el_output_info</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span><span class="s1">&#39;footer&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>        <span class="n">el_output_info</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;color: gray; font-size: 0.9em;&#39;</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>        <span class="c1"># Pythonバージョン</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>        <span class="n">el_python_version</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>        <span class="n">el_python_version</span><span class="o">.</span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;Python version: &#39;</span> <span class="o">+</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a>        <span class="n">el_output_info</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el_python_version</span><span class="p">)</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a>
+<a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a>        <span class="c1"># 出力日時</span>
+<a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a>        <span class="n">el_current_dt</span> <span class="o">=</span> <span class="n">el_python_version</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a>        <span class="n">el_current_dt</span><span class="o">.</span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;出力日時: &#39;</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y年%m月</span><span class="si">%d</span><span class="s1">日 %H:%M:%S&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a>        <span class="n">el_output_info</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el_current_dt</span><span class="p">)</span>
+<a id="__codelineno-20-30" name="__codelineno-20-30" href="#__codelineno-20-30"></a>
+<a id="__codelineno-20-31" name="__codelineno-20-31" href="#__codelineno-20-31"></a>        <span class="n">el</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el_output_info</span><span class="p">)</span>
+<a id="__codelineno-20-32" name="__codelineno-20-32" href="#__codelineno-20-32"></a>        <span class="k">break</span>
+<a id="__codelineno-20-33" name="__codelineno-20-33" href="#__codelineno-20-33"></a>
+<a id="__codelineno-20-34" name="__codelineno-20-34" href="#__codelineno-20-34"></a>    <span class="k">return</span> <span class="n">soup</span>
+</code></pre></div>
+<p>styles.scss
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nc">.back-cover-page</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="nt">page</span><span class="nd">:</span><span class="w"> </span><span class="nt">back-page</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span><span class="nt">page-break-before</span><span class="nd">:</span><span class="w"> </span><span class="nt">always</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="nt">height</span><span class="nd">:</span><span class="w"> </span><span class="nt">100</span><span class="err">%</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span><span class="nt">display</span><span class="nd">:</span><span class="w"> </span><span class="nt">flex</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">    </span><span class="nt">flex-flow</span><span class="nd">:</span><span class="w"> </span><span class="nt">column</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><img alt="" src="img/2022-09-11-23-10-40.png" /></p>
 
 
 

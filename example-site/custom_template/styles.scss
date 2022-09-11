@@ -90,6 +90,9 @@ $logo: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbMAAAByCAIAAABWTKh1AAA
 .back-cover-page {
     page: back-page;
     page-break-before: always;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
 }
 
 @page back-page {

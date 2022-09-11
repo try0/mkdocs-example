@@ -323,3 +323,69 @@ styles.scss
 ```
 
 ![](img/2022-09-11-22-37-48.png)
+
+
+
+## イベントフック
+
+mkdocs.ymlと同一ディレクトリーに、`pdf_event_hook.py`を配置して、PDF出力時に以下処理をフックして処理を拡張することができます。
+
+```python
+def inject_link(html: str, href: str, page: Page, logger: logging) -> str:
+
+def pre_js_render(soup: BeautifulSoup, logger: logging) -> BeautifulSoup:
+
+def pre_pdf_render(soup: BeautifulSoup, logger: logging) -> BeautifulSoup:
+```
+
+裏表紙下部へ、出力時の情報を出力してみます。
+
+```python
+import logging
+import sys
+import datetime
+
+from bs4 import BeautifulSoup
+from mkdocs.structure.pages import Page
+
+def pre_pdf_render(soup: BeautifulSoup, logger: logging) -> BeautifulSoup:
+    logger.info('(hook on pre_pdf_render)')
+    
+    for el in soup.select('.back-cover-page'):
+        logger.info(el)
+        
+        el_main = soup.new_tag('main')
+        el_main['style'] = 'flex: 1;'
+        el.append(el_main)
+
+        el_output_info = soup.new_tag('footer')
+        el_output_info['style'] = 'color: gray; font-size: 0.9em;'
+
+        # Pythonバージョン
+        el_python_version = soup.new_tag('div')
+        el_python_version.string = 'Python version: ' + sys.version
+        el_output_info.append(el_python_version)
+
+        # 出力日時
+        el_current_dt = el_python_version = soup.new_tag('div')
+        el_current_dt.string = '出力日時: ' + datetime.datetime.now().strftime('%Y年%m月%d日 %H:%M:%S')
+        el_output_info.append(el_current_dt)
+
+        el.append(el_output_info)
+        break
+
+    return soup
+```
+
+styles.scss
+```scss
+.back-cover-page {
+    page: back-page;
+    page-break-before: always;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+```
+
+![](img/2022-09-11-23-10-40.png)
