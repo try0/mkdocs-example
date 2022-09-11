@@ -275,3 +275,51 @@ styles.scss
 表紙をのぞいた各ページの左上にロゴが表示されます。
 
 ![](img/2022-09-11-14-47-00.png)
+
+
+
+## 裏表紙をつける・カスタマイズする
+
+裏表紙用のHTMLを差し込むことができます。  
+オプションで`back_cover: true`を設定し、custom_template_pathで指定したディレクトリー内に、`back_cover.html`を配置します。
+
+```yaml
+plugins:
+  - with-pdf:
+      back_cover: true
+      custom_template_path: custom_template
+```
+
+back_cover.html
+```html
+<!-- 裏表紙 -->
+<div class="back-cover-page">
+</div>
+```
+
+不要な情報があればスタイルで無効化します。
+
+styles.scss
+```scss
+.back-cover-page {
+    page: back-page;
+    page-break-before: always;
+}
+
+@page back-page {
+    @top-right {
+        content: none;
+    }
+    @top-left {
+        content: none;
+    }
+    @bottom-center {
+        content: none;
+    }
+    @bottom-right {
+        content: none;
+    }
+}
+```
+
+![](img/2022-09-11-22-37-48.png)

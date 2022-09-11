@@ -16,15 +16,15 @@ plugins:
       # cover: true
       # cover_title: TITLE TEXT
       # cover_subtitle: SUBTITLE TEXT
+      back_cover: true
       custom_template_path: custom_template
-      debug_html: false
+      debug_html: true
       show_anchors: false
       toc_title: 目次
       toc_level: 3
       two_columns_level: 3
       exclude_pages:
         - mkdocs-with-pdf-output.html
-
 
 markdown_extensions:
   - pymdownx.highlight:

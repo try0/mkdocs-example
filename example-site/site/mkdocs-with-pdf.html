@@ -286,6 +286,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    裏表紙をカスタマイズする
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -421,6 +428,13 @@
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     各ページにロゴを表示する
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    裏表紙をカスタマイズする
   </a>
   
 </li>
@@ -609,6 +623,41 @@ styles.scss
 </code></pre></div></p>
 <p>表紙をのぞいた各ページの左上にロゴが表示されます。</p>
 <p><img alt="" src="img/2022-09-11-14-47-00.png" /></p>
+<h2 id="_8">裏表紙をカスタマイズする</h2>
+<p>裏表紙用のHTMLを差し込むことができます。<br />
+オプションで<code>back_cover: true</code>を設定し、custom_template_pathで指定したディレクトリー内に、<code>back_cover.html</code>を配置します。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">with-pdf</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">      </span><span class="nt">back_cover</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">      </span><span class="nt">custom_template_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom_template</span><span class="w"></span>
+</code></pre></div>
+<p>back_cover.html
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="cm">&lt;!-- 裏表紙 --&gt;</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;back-cover-page&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p>不要な情報があればスタイルで無効化します。</p>
+<p>styles.scss
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nc">.back-cover-page</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="nt">page</span><span class="nd">:</span><span class="w"> </span><span class="nt">back-page</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="nt">page-break-before</span><span class="nd">:</span><span class="w"> </span><span class="nt">always</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="k">@page</span><span class="w"> </span><span class="nt">back-page</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">    </span><span class="k">@top-right</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">        </span><span class="nt">content</span><span class="nd">:</span><span class="w"> </span><span class="nt">none</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">    </span><span class="k">@top-left</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">        </span><span class="nt">content</span><span class="nd">:</span><span class="w"> </span><span class="nt">none</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w">    </span><span class="k">@bottom-center</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">        </span><span class="nt">content</span><span class="nd">:</span><span class="w"> </span><span class="nt">none</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">    </span><span class="k">@bottom-right</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">        </span><span class="nt">content</span><span class="nd">:</span><span class="w"> </span><span class="nt">none</span><span class="o">;</span><span class="w"></span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
 
 
 
