@@ -328,7 +328,7 @@ styles.scss
 
 ## イベントフック
 
-mkdocs.ymlと同一ディレクトリーに、`pdf_event_hook.py`を配置して、PDF出力時に以下処理をフックして処理を拡張することができます。
+mkdocs.ymlと同一ディレクトリーに、`pdf_event_hook.py`を配置することで、PDF出力時に処理を拡張することができます。
 
 ```python
 def inject_link(html: str, href: str, page: Page, logger: logging) -> str:
@@ -338,7 +338,8 @@ def pre_js_render(soup: BeautifulSoup, logger: logging) -> BeautifulSoup:
 def pre_pdf_render(soup: BeautifulSoup, logger: logging) -> BeautifulSoup:
 ```
 
-裏表紙下部へ、出力時の情報を出力してみます。
+pre_pdf_renderを拡張し、PDFとして出力する要素の追加を試してみます。  
+以下処理は裏表紙のフッターへ、ビルド時の情報を出力しています。
 
 ```python
 import logging

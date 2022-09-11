@@ -674,14 +674,15 @@ styles.scss
 </code></pre></div></p>
 <p><img alt="" src="img/2022-09-11-22-37-48.png" /></p>
 <h2 id="_9">イベントフック</h2>
-<p>mkdocs.ymlと同一ディレクトリーに、<code>pdf_event_hook.py</code>を配置して、PDF出力時に以下処理をフックして処理を拡張することができます。</p>
+<p>mkdocs.ymlと同一ディレクトリーに、<code>pdf_event_hook.py</code>を配置することで、PDF出力時に処理を拡張することができます。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">def</span> <span class="nf">inject_link</span><span class="p">(</span><span class="n">html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">href</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="k">def</span> <span class="nf">pre_js_render</span><span class="p">(</span><span class="n">soup</span><span class="p">:</span> <span class="n">BeautifulSoup</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeautifulSoup</span><span class="p">:</span>
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
 <a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="k">def</span> <span class="nf">pre_pdf_render</span><span class="p">(</span><span class="n">soup</span><span class="p">:</span> <span class="n">BeautifulSoup</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeautifulSoup</span><span class="p">:</span>
 </code></pre></div>
-<p>裏表紙下部へ、出力時の情報を出力してみます。</p>
+<p>pre_pdf_renderを拡張し、PDFとして出力する要素の追加を試してみます。<br />
+以下処理は裏表紙のフッターへ、ビルド時の情報を出力しています。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">import</span> <span class="nn">logging</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kn">import</span> <span class="nn">sys</span>
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="kn">import</span> <span class="nn">datetime</span>
