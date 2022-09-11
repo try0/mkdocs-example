@@ -1,0 +1,708 @@
+<html><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.3.1, mkdocs-material-8.4.3" name="generator"/>
+<title>My Docs</title>
+<link href="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/assets/stylesheets/main.6b80c2a2.min.css" rel="stylesheet"/>
+<link href="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<style>:root {
+  string-set: author 'Author', copyright 'CopyRight', title 'My Docs'; }
+
+h1, h2, h3 {
+  string-set: chapter content(); }
+@page {
+  size: a4 portrait;
+  margin: 25mm 10mm 25mm 10mm;
+  counter-increment: page;
+  white-space: pre;
+  color: grey;
+  @top-right {
+    font-size: 7pt;
+    content: string(chapter); }
+  @bottom-center {
+    font-size: 8pt;
+    content: "- " counter(page) "/" counter(pages) " -"; }
+  @bottom-right {
+    font-size: 6pt;
+    content: string(copyright); } }
+
+@media print {
+  body {
+    background: none;
+    background-color: #fff; } }
+
+article,
+section + section {
+  page-break-before: always;
+  min-height: 100vh;
+  /* Defining all page breaks */ }
+  article,
+  article h1,
+  article h2,
+  article h3,
+  article h4,
+  article h5,
+  article h6,
+  article div.tabbed-content--wrap > .tabbed-content,
+  section + section,
+  section + section h1,
+  section + section h2,
+  section + section h3,
+  section + section h4,
+  section + section h5,
+  section + section h6,
+  section + section div.tabbed-content--wrap > .tabbed-content {
+    clear: both; }
+  article h1,
+  article h2,
+  article h3,
+  article h4,
+  article h5,
+  article h6,
+  article img,
+  section + section h1,
+  section + section h2,
+  section + section h3,
+  section + section h4,
+  section + section h5,
+  section + section h6,
+  section + section img {
+    page-break-after: avoid;
+    page-break-inside: avoid; }
+  article a,
+  article blockquote,
+  article table,
+  article ul,
+  article ol,
+  section + section a,
+  section + section blockquote,
+  section + section table,
+  section + section ul,
+  section + section ol {
+    page-break-before: avoid;
+    page-break-inside: avoid; }
+  article pre,
+  article dt + dd,
+  section + section pre,
+  section + section dt + dd {
+    page-break-before: avoid; }
+  article h1 + ul,
+  article h2 + ul,
+  article h3 + ul,
+  article h4 + ul,
+  article h5 + ul,
+  article h6 + ul,
+  article h1 + ol,
+  article h2 + ol,
+  article h3 + ol,
+  article h4 + ol,
+  article h5 + ol,
+  article h6 + ol,
+  section + section h1 + ul,
+  section + section h2 + ul,
+  section + section h3 + ul,
+  section + section h4 + ul,
+  section + section h5 + ul,
+  section + section h6 + ul,
+  section + section h1 + ol,
+  section + section h2 + ol,
+  section + section h3 + ol,
+  section + section h4 + ol,
+  section + section h5 + ol,
+  section + section h6 + ol {
+    page-break-inside: auto; }
+  article div.admonition,
+  section + section div.admonition {
+    page-break-inside: avoid; }
+  article div.tabbed-content--wrap,
+  section + section div.tabbed-content--wrap {
+    page-break-inside: avoid; }
+  article * + div.highlight,
+  article * + div.tabbed-set,
+  section + section * + div.highlight,
+  section + section * + div.tabbed-set {
+    page-break-before: avoid; }
+
+section.two-columns {
+  columns: 2;
+  column-gap: 1cm; }
+
+article h1 {
+  border-bottom: 2px solid #f00; }
+
+article h2 {
+  border-bottom: 1px solid #f99; }
+
+article h3 {
+  border-bottom: 0.5px solid #eee; }
+
+article h1 > .pdf-order,
+article h2 > .pdf-order,
+article h3 > .pdf-order {
+  padding-left: 6px; }
+
+article#doc-toc {
+  margin: 0 .8rem 1.2rem;
+  padding-top: .6rem;
+  font-size: 12pt;
+  line-height: 1.6; }
+  article#doc-toc > h1 {
+    margin: 0 0 2rem;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: -.01em;
+    page-break-after: auto;
+    page-break-inside: auto;
+    bookmark-level: none; }
+    article#doc-toc > h1::before {
+      display: block;
+      margin-top: -9px;
+      padding-top: 9px;
+      content: ""; }
+  article#doc-toc ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 1em;
+    font-size: 8pt;
+    page-break-inside: auto !important; }
+  article#doc-toc li {
+    list-style: none; }
+    article#doc-toc li > a {
+      color: inherit;
+      text-decoration: none;
+      padding-top: 0.4rem;
+      border-bottom: 1px dotted #ddd;
+      display: inline-block;
+      width: 100%; }
+      article#doc-toc li > a > .pdf-order {
+        padding-right: 0.5em; }
+      article#doc-toc li > a::after {
+        float: right;
+        content: target-counter(attr(href), page); }
+
+@media print {
+  html {
+    font-size: 95%;
+    font-family: 'Kelmscott Roman NF', 'Noto Serif JP', serif; }
+  body {
+    font-size: 10.5pt;
+    font-family: 'Classico URW T OT', 'Noto Serif JP', serif; }
+  article {
+    font-size: 0.8rem;
+    line-height: 1.6; }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  label {
+    font-family: 'Gentium Book Basic', 'Helvetica Neue', Helvetica, Arial, 'Noto Sans JP', 'Roboto', sans-serif; }
+  pre,
+  code,
+  var,
+  samp,
+  kbd,
+  tt {
+    font-family: 'Noto Sans Mono CJK JP', 'Courier New', monospace, serif;
+    font-size: 0.8em; }
+  pre code,
+  pre var,
+  pre samp,
+  pre kbd,
+  pre tt {
+    font-size: 100%; } }
+@page :first {
+  @top-right {
+    content: normal; }
+  @bottom-center {
+    content: normal; }
+  @bottom-right {
+    content: normal; } }
+
+article#doc-cover {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; }
+  article#doc-cover > .wrapper {
+    flex: 1 0 auto;
+    text-align: center;
+    padding: 0 3rem; }
+    article#doc-cover > .wrapper.upper {
+      flex: 1 1 auto;
+      max-height: 30vh; }
+      article#doc-cover > .wrapper.upper > .logo {
+        width: 100%;
+        height: 100%;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: contain; }
+    article#doc-cover > .wrapper h1 {
+      font-size: 36pt;
+      line-height: 1.4; }
+    article#doc-cover > .wrapper h2 {
+      border: none;
+      bookmark-level: none; }
+  article#doc-cover > .properties {
+    flex: 0 0 auto;
+    text-align: right;
+    padding: 0 2rem; }
+    article#doc-cover > .properties p#copyright {
+      font-size: 80%; }
+
+article#doc-back_cover {
+  page: back_cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center; }
+  article#doc-back_cover .wrapper {
+    flex: 1 0 auto;
+    display: inline-block;
+    background: #eee; }
+  article#doc-back_cover .qrcode {
+    display: inline-block;
+    flex: 0 0 auto;
+    background: #eee; }
+    article#doc-back_cover .qrcode > a {
+      display: inline-block;
+      padding: 0.5em 2em;
+      border-radius: 1em;
+      background-color: #fff; }
+      article#doc-back_cover .qrcode > a img {
+        width: 100%;
+        height: auto; }
+
+@page back_cover {
+  background-color: #eee;
+  @top-right {
+    content: normal; }
+  @bottom-center {
+    content: normal; }
+  @bottom-left {
+    font-size: 8pt;
+    content: string(title); }
+  @bottom-right {
+    font-size: 8pt;
+    content: string(copyright); } }
+html {
+  font-size: 20px; }
+
+article h1 {
+  border-bottom: 2px solid #177e7e !important; }
+
+article h2 {
+  border-bottom: 1px solid rgba(23, 126, 126, 0.85) !important; }
+
+article h3 {
+  border-bottom: 0.5px solid #eee; }
+
+article h1 > .pdf-order,
+article h2 > .pdf-order,
+article h3 > .pdf-order {
+  padding-left: 6px; }
+
+.pdf-order {
+  color: #177e7e !important; }
+
+img {
+  max-width: 16em !important;
+  border: solid 1px gray !important; }
+
+.triangle {
+  border-top: 1em solid rgba(23, 126, 126, 0.85);
+  border-right: 1em solid transparent;
+  border-left: 1em solid transparent;
+  height: 1em;
+  width: 1em; }
+
+.html-only {
+  display: none; }
+
+.cover-page {
+  height: 100%; }
+
+.cover-page .title h1 {
+  background-color: #177e7e;
+  margin: 30% -3em;
+  padding: 3em 1em;
+  color: white;
+  text-align: center;
+  font-size: 2em; }
+
+.cover-logo {
+  margin-top: 7em;
+  float: right;
+  height: 10em;
+  width: 20em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-clip: border-box;
+  background-image: url(data:image/png;base64,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); }
+</style><style>@media print {
+  .md-typeset .tabbed-set {
+    display: block; }
+    .md-typeset .tabbed-set .tabbed-content--wrap {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 0.25rem; }
+      .md-typeset .tabbed-set .tabbed-content--wrap > input {
+        display: none; }
+      .md-typeset .tabbed-set .tabbed-content--wrap > label {
+        background-color: rgba(170, 170, 170, 0.2);
+        padding: 0.2rem 2rem;
+        margin: 0;
+        font-weight: 600;
+        color: #666;
+        border-radius: 3px 3px 0 0;
+        border-bottom-color: transparent; }
+      .md-typeset .tabbed-set .tabbed-content--wrap > .tabbed-content {
+        display: block;
+        box-shadow: none; }
+  .md-typeset .admonition-title + .tabbed-set:last-child,
+  .md-typeset summary + .tabbed-set:last-child {
+    margin-top: 0.5rem; }
+  .md-typeset > details summary::after {
+    display: none; }
+  .md-typeset > div, .md-typeset > div.admonition, .md-typeset > details, .md-typeset > div.tabbed-set, .md-typeset > blockquote, .md-typeset > mark, .md-typeset > table, .md-typeset > p {
+    margin-left: 0.7rem; }
+  .md-typeset > table.highlighttable {
+    margin: 0 0 0 0.7rem; }
+  .md-typeset table.highlighttable,
+  .md-typeset table.highlighttable > tbody {
+    width: 100%; }
+  .md-typeset table.highlighttable {
+    padding-bottom: 0.5em; }
+    .md-typeset table.highlighttable .linenos {
+      padding-bottom: 0; }
+  .md-typeset > ul {
+    margin-left: 1.5rem; }
+  .md-typeset h4,
+  .md-typeset h5,
+  .md-typeset h6 {
+    margin-left: 0.25rem; }
+  .md-typeset *:not(h3) + h4 {
+    margin-top: 1.5rem; }
+  .md-typeset hr {
+    border-bottom: 1px dotted #999; }
+  .md-typeset .footnote {
+    line-height: 1.1; }
+  .md-typeset table:not([class]) th, .md-typeset table:not([class]) td {
+    padding: 0.5em 1.25rem 0.4em; }
+  .md-typeset table:not([class]) td {
+    border-bottom: 1px solid #eee; }
+  .md-typeset span.twemoji {
+    vertical-align: middle;
+    height: 1.125rem;
+    display: inline-block; }
+    .md-typeset span.twemoji > img {
+      height: 1.125rem;
+      vertical-align: middle;
+      display: inline-block; } }
+.md-typeset kbd {
+  vertical-align: middle;
+  border-color: #b8b8b8;
+  border-style: outset;
+  border-width: .05rem .075rem .1rem .075rem;
+  border-radius: .25rem;
+  box-shadow: none; }
+
+:root {
+  --print-md-admonition-icon--note: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23448aff"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>');
+  --print-md-admonition-icon--abstract: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300b0ff"><path d="M4 5h16v2H4V5m0 4h16v2H4V9m0 4h16v2H4v-2m0 4h10v2H4v-2z"/></svg>');
+  --print-md-admonition-icon--info: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300b8d4"><path d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2z"/></svg>');
+  --print-md-admonition-icon--tip: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300bfa5"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.58.58 0 01-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27z"/></svg>');
+  --print-md-admonition-icon--success: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300c853"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>');
+  --print-md-admonition-icon--question: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2364dd17"><path d="M15.07 11.25l-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 00-2-2 2 2 0 00-2 2H8a4 4 0 014-4 4 4 0 014 4 3.2 3.2 0 01-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10c0-5.53-4.5-10-10-10z"/></svg>');
+  --print-md-admonition-icon--warning: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff9100"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2 1 21z"/></svg>');
+  --print-md-admonition-icon--failure: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff5252"><path d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12 6.47 2 12 2m3.59 5L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41 15.59 7z"/></svg>');
+  --print-md-admonition-icon--danger: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff1744"><path d="M11.5 20l4.86-9.73H13V4l-5 9.73h3.5V20M12 2c2.75 0 5.1 1 7.05 2.95C21 6.9 22 9.25 22 12s-1 5.1-2.95 7.05C17.1 21 14.75 22 12 22s-5.1-1-7.05-2.95C3 17.1 2 14.75 2 12s1-5.1 2.95-7.05C6.9 3 9.25 2 12 2z"/></svg>');
+  --print-md-admonition-icon--bug: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23f50057"><path d="M14 12h-4v-2h4m0 6h-4v-2h4m6-6h-2.81a5.985 5.985 0 00-1.82-1.96L17 4.41 15.59 3l-2.17 2.17a6.002 6.002 0 00-2.83 0L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8z"/></svg>');
+  --print-md-admonition-icon--example: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23651fff"><path d="M7 13v-2h14v2H7m0 6v-2h14v2H7M7 7V5h14v2H7M3 8V5H2V4h2v4H3m-1 9v-1h3v4H2v-1h2v-.5H3v-1h1V17H2m2.25-7a.75.75 0 01.75.75c0 .2-.08.39-.21.52L3.12 13H5v1H2v-.92L4 11H2v-1h2.25z"/></svg>');
+  --print-md-admonition-icon--quote: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%239e9e9e"><path d="M14 17h3l2-4V7h-6v6h3M6 17h3l2-4V7H5v6h3l-2 4z"/></svg>'); }
+
+@media print {
+  .md-typeset .admonition-title {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .admonition-title::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--note); }
+  .md-typeset .note > .admonition-title, .md-typeset .note > summary {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .note > .admonition-title::before, .md-typeset .note > summary::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--note); }
+  .md-typeset .abstract > .admonition-title, .md-typeset .tldr > .admonition-title, .md-typeset .summary > .admonition-title, .md-typeset .abstract > summary, .md-typeset .tldr > summary, .md-typeset .summary > summary {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .abstract > .admonition-title::before, .md-typeset .tldr > .admonition-title::before, .md-typeset .summary > .admonition-title::before, .md-typeset .abstract > summary::before, .md-typeset .tldr > summary::before, .md-typeset .summary > summary::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--abstract); }
+  .md-typeset .info > .admonition-title, .md-typeset .todo > .admonition-title, .md-typeset .info > summary, .md-typeset .todo > summary {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .info > .admonition-title::before, .md-typeset .todo > .admonition-title::before, .md-typeset .info > summary::before, .md-typeset .todo > summary::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--info); }
+  .md-typeset .tip > .admonition-title, .md-typeset .important > .admonition-title, .md-typeset .hint > .admonition-title, .md-typeset .tip > summary, .md-typeset .important > summary, .md-typeset .hint > summary {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .tip > .admonition-title::before, .md-typeset .important > .admonition-title::before, .md-typeset .hint > .admonition-title::before, .md-typeset .tip > summary::before, .md-typeset .important > summary::before, .md-typeset .hint > summary::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--tip); }
+  .md-typeset .success > .admonition-title, .md-typeset .done > .admonition-title, .md-typeset .check > .admonition-title, .md-typeset .success > summary, .md-typeset .done > summary, .md-typeset .check > summary {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .success > .admonition-title::before, .md-typeset .done > .admonition-title::before, .md-typeset .check > .admonition-title::before, .md-typeset .success > summary::before, .md-typeset .done > summary::before, .md-typeset .check > summary::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--success); }
+  .md-typeset .question > .admonition-title, .md-typeset .faq > .admonition-title, .md-typeset .help > .admonition-title, .md-typeset .question > summary, .md-typeset .faq > summary, .md-typeset .help > summary {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .question > .admonition-title::before, .md-typeset .faq > .admonition-title::before, .md-typeset .help > .admonition-title::before, .md-typeset .question > summary::before, .md-typeset .faq > summary::before, .md-typeset .help > summary::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--question); }
+  .md-typeset .warning > .admonition-title, .md-typeset .attention > .admonition-title, .md-typeset .caution > .admonition-title, .md-typeset .warning > summary, .md-typeset .attention > summary, .md-typeset .caution > summary {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .warning > .admonition-title::before, .md-typeset .attention > .admonition-title::before, .md-typeset .caution > .admonition-title::before, .md-typeset .warning > summary::before, .md-typeset .attention > summary::before, .md-typeset .caution > summary::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--warning); }
+  .md-typeset .failure > .admonition-title, .md-typeset .missing > .admonition-title, .md-typeset .fail > .admonition-title, .md-typeset .failure > summary, .md-typeset .missing > summary, .md-typeset .fail > summary {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .failure > .admonition-title::before, .md-typeset .missing > .admonition-title::before, .md-typeset .fail > .admonition-title::before, .md-typeset .failure > summary::before, .md-typeset .missing > summary::before, .md-typeset .fail > summary::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--failure); }
+  .md-typeset .danger > .admonition-title, .md-typeset .error > .admonition-title, .md-typeset .danger > summary, .md-typeset .error > summary {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .danger > .admonition-title::before, .md-typeset .error > .admonition-title::before, .md-typeset .danger > summary::before, .md-typeset .error > summary::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--danger); }
+  .md-typeset .bug > .admonition-title, .md-typeset .bug > summary {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .bug > .admonition-title::before, .md-typeset .bug > summary::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--bug); }
+  .md-typeset .example > .admonition-title, .md-typeset .example > summary {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .example > .admonition-title::before, .md-typeset .example > summary::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--example); }
+  .md-typeset .quote > .admonition-title, .md-typeset .cite > .admonition-title, .md-typeset .quote > summary, .md-typeset .cite > summary {
+    padding: .6rem .6rem .4rem 2.2rem; }
+  .md-typeset .quote > .admonition-title::before, .md-typeset .cite > .admonition-title::before, .md-typeset .quote > summary::before, .md-typeset .cite > summary::before {
+    margin-top: -0.15rem;
+    background-color: transparent;
+    background-image: var(--print-md-admonition-icon--quote); } }
+
+:root {
+  --print-md-footnotes-icon: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000000de"><path d="M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.42L5.83 13H21V7h-2z"/></svg>'); }
+
+@media print {
+  .md-typeset .footnote-backref::before {
+    background-color: transparent;
+    background-image: var(--print-md-footnotes-icon); } }
+
+:root {
+  --print-md-details-icon: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="hsla(0, 0%, 0%, 0.87)"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>'); }
+
+@media print {
+  .md-typeset summary::after {
+    background-color: transparent;
+    background-image: var(--print-md-details-icon);
+    -webkit-mask-image: none;
+    mask-image: none; } }
+
+:root {
+  --print-md-tasklist-icon: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ddd"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>');
+  --print-md-tasklist-icon--checked: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300e676"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>'); }
+
+@media print {
+  .md-typeset .task-list-control .task-list-indicator::before {
+    background-color: transparent;
+    background-image: var(--print-md-tasklist-icon); }
+  .md-typeset .task-list-control [type=checkbox]:checked + .task-list-indicator::before {
+    background-color: transparent;
+    background-image: var(--print-md-tasklist-icon--checked); } }
+
+/*# sourceMappingURL=material-polyfills.css.map*/
+</style></head><body><!-- 表紙 -->
+<div class="cover-page">
+<div class="title">
+<h1>My Docs</h1>
+</div>
+<div class="cover-logo"></div>
+</div>
+<!-- 注意書き -->
+<div style="page-break-before: always;">
+<h1>はじめに</h1>
+<span>注意書き等～～～～～</span>
+</div><article id="doc-toc"><h1>目次</h1><ul><li><a href="#.:welcome-to-mkdocs"><span class="pdf-order">1. </span>Welcome to MkDocs</a><ul><li><a href="#.:commands"><span class="pdf-order">1.1 </span>Commands</a></li><li><a href="#.:project-layout"><span class="pdf-order">1.2 </span>Project layout</a></li></ul></li><li><a href="#mkdocs-with-pdf/:mkdocs-with-pdf"><span class="pdf-order">2. </span>mkdocs-with-pdf</a><ul><li><a href="#mkdocs-with-pdf/:_1"><span class="pdf-order">2.1 </span>環境構築</a></li><li><a href="#mkdocs-with-pdf/:_2"><span class="pdf-order">2.2 </span>表紙をつける</a></li><li><a href="#mkdocs-with-pdf/:_3"><span class="pdf-order">2.3 </span>表紙をカスタマイズする</a></li><li><a href="#mkdocs-with-pdf/:_4"><span class="pdf-order">2.4 </span>表紙の次に注意書き等のページを差し込む</a></li><li><a href="#mkdocs-with-pdf/:pdf"><span class="pdf-order">2.5 </span>PDF出力用のスタイルシートを指定する</a></li><li><a href="#mkdocs-with-pdf/:_5"><span class="pdf-order">2.6 </span>見出しのボーダーカラーを変更する</a></li><li><a href="#mkdocs-with-pdf/:_6"><span class="pdf-order">2.7 </span>目次へ出力する見出しレベルを指定する</a></li><li><a href="#mkdocs-with-pdf/:pdfhtml"><span class="pdf-order">2.8 </span>PDF出力用のHTMLを確認する</a></li><li><a href="#mkdocs-with-pdf/:2"><span class="pdf-order">2.9 </span>2カラム構成で出力する</a><ul><li><a href="#mkdocs-with-pdf/:material-for-mkdocs"><span class="pdf-order">2.9.1 </span>Material for MkDocsのサポートブラウザーを確認する</a></li></ul></li><li><a href="#mkdocs-with-pdf/:pdf_1"><span class="pdf-order">2.10 </span>特定のページをPDF出力対象から除外する</a></li></ul></li></ul></article><article class="md-content__inner md-typeset" data-url="/." id=".:">
+<h1 id=".:welcome-to-mkdocs"><span class="pdf-order">1. </span>Welcome to MkDocs</h1>
+<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
+<h2 id=".:commands"><span class="pdf-order">1.1 </span>Commands</h2>
+<ul>
+<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
+<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
+<li><code>mkdocs build</code> - Build the documentation site.</li>
+<li><code>mkdocs -h</code> - Print help message and exit.</li>
+</ul>
+<h2 id=".:project-layout"><span class="pdf-order">1.2 </span>Project layout</h2>
+<div class="highlight"><pre><span></span><code>mkdocs.yml    # The configuration file.
+docs/
+    index.md  # The documentation homepage.
+    ...       # Other markdown pages, images and other files.
+</code></pre></div>
+</article><article class="md-content__inner md-typeset" data-url="/mkdocs-with-pdf/" id="mkdocs-with-pdf/:">
+<h1 id="mkdocs-with-pdf/:mkdocs-with-pdf"><span class="pdf-order">2. </span>mkdocs-with-pdf</h1>
+<p><a href="https://github.com/orzih/mkdocs-with-pdf">mkdocs-with-pdf</a>を使用して、ドキュメントをPDFとして出力することができます。</p>
+<h2 id="mkdocs-with-pdf/:_1"><span class="pdf-order">2.1 </span>環境構築</h2>
+<p>WeasyPrintに依存してるので、事前に環境構築が必要。</p>
+<p>https://doc.courtbouillon.org/weasyprint/latest/first_steps.html#linux</p>
+<p>インストールする。</p>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-0-1" id="mkdocs-with-pdf/:__codelineno-0-1" name="__codelineno-0-1"></a>pip install mkdocs-with-pdf
+</code></pre></div>
+<p>プラグインを有効にする。</p>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-1-1" id="mkdocs-with-pdf/:__codelineno-1-1" name="__codelineno-1-1"></a><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-1-2" id="mkdocs-with-pdf/:__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">with-pdf</span><span class="w"></span>
+</code></pre></div>
+<h2 id="mkdocs-with-pdf/:_2"><span class="pdf-order">2.2 </span>表紙をつける</h2>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-2-1" id="mkdocs-with-pdf/:__codelineno-2-1" name="__codelineno-2-1"></a><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-2-2" id="mkdocs-with-pdf/:__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">with-pdf</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-2-3" id="mkdocs-with-pdf/:__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">        </span><span class="nt">cover</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-2-4" id="mkdocs-with-pdf/:__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">        </span><span class="nt">cover_title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My Docs</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-09-00-11-38.png" style=""/></p>
+<h2 id="mkdocs-with-pdf/:_3"><span class="pdf-order">2.3 </span>表紙をカスタマイズする</h2>
+<p>表紙用のHTMLを差し込むことができます。<br/>
+custom_template_pathで指定したディレクトリー内に、<code>cover.html</code>を配置します。</p>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-3-1" id="mkdocs-with-pdf/:__codelineno-3-1" name="__codelineno-3-1"></a><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-3-2" id="mkdocs-with-pdf/:__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">with-pdf</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-3-3" id="mkdocs-with-pdf/:__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">        </span><span class="nt">cover</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-3-4" id="mkdocs-with-pdf/:__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">        </span><span class="nt">custom_template_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom_template</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-09-00-07-53.png" style=""/></p>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-4-1" id="mkdocs-with-pdf/:__codelineno-4-1" name="__codelineno-4-1"></a><span class="cm">&lt;!-- 表紙 --&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-4-2" id="mkdocs-with-pdf/:__codelineno-4-2" name="__codelineno-4-2"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">"background-color: steelblue; padding: 0.5em;"</span><span class="p">&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-4-3" id="mkdocs-with-pdf/:__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">"color: white;"</span><span class="p">&gt;</span>MKDoc<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-4-4" id="mkdocs-with-pdf/:__codelineno-4-4" name="__codelineno-4-4"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-09-00-09-42.png" style=""/></p>
+<p>デフォルトで余白が設定されているので、帯状に塗りつぶしたい場合、<code>margin</code>をマイナスに設定して描画領域を調整します。</p>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-5-1" id="mkdocs-with-pdf/:__codelineno-5-1" name="__codelineno-5-1"></a><span class="cm">&lt;!-- 表紙 --&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-5-2" id="mkdocs-with-pdf/:__codelineno-5-2" name="__codelineno-5-2"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">"background-color: steelblue; padding: 0.5em 0.5em 0.5em 3.5em; margin: 0 -3em;"</span><span class="p">&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-5-3" id="mkdocs-with-pdf/:__codelineno-5-3" name="__codelineno-5-3"></a>    <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">"color: white;"</span><span class="p">&gt;</span>MKDocs<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-5-4" id="mkdocs-with-pdf/:__codelineno-5-4" name="__codelineno-5-4"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-09-00-18-15.png" style=""/></p>
+<h2 id="mkdocs-with-pdf/:_4"><span class="pdf-order">2.4 </span>表紙の次に注意書き等のページを差し込む</h2>
+<p>cover.html 内で改ページを指定することで、2ページ以降にも任意のページを差し込むことができます。</p>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-6-1" id="mkdocs-with-pdf/:__codelineno-6-1" name="__codelineno-6-1"></a><span class="cm">&lt;!-- 表紙 --&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-6-2" id="mkdocs-with-pdf/:__codelineno-6-2" name="__codelineno-6-2"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">"background-color: steelblue; padding: 0.5em 0.5em 0.5em 3.5em; margin: 0 -3em;"</span><span class="p">&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-6-3" id="mkdocs-with-pdf/:__codelineno-6-3" name="__codelineno-6-3"></a>    <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">"color: white;"</span><span class="p">&gt;</span>MKDocs<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-6-4" id="mkdocs-with-pdf/:__codelineno-6-4" name="__codelineno-6-4"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-6-5" id="mkdocs-with-pdf/:__codelineno-6-5" name="__codelineno-6-5"></a>
+<a href="#mkdocs-with-pdf/:__codelineno-6-6" id="mkdocs-with-pdf/:__codelineno-6-6" name="__codelineno-6-6"></a><span class="cm">&lt;!-- 注意書き --&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-6-7" id="mkdocs-with-pdf/:__codelineno-6-7" name="__codelineno-6-7"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">"page-break-before: always;"</span><span class="p">&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-6-8" id="mkdocs-with-pdf/:__codelineno-6-8" name="__codelineno-6-8"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>はじめに<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-6-9" id="mkdocs-with-pdf/:__codelineno-6-9" name="__codelineno-6-9"></a>    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>注意書き等～～～～～<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<a href="#mkdocs-with-pdf/:__codelineno-6-10" id="mkdocs-with-pdf/:__codelineno-6-10" name="__codelineno-6-10"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-09-00-25-26.png" style=""/></p>
+<h2 id="mkdocs-with-pdf/:pdf"><span class="pdf-order">2.5 </span>PDF出力用のスタイルシートを指定する</h2>
+<p>custom_template_pathで指定したディレクトリー内に、<code>styles.scss</code>を配置します。</p>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-09-00-38-52.png" style=""/></p>
+<h2 id="mkdocs-with-pdf/:_5"><span class="pdf-order">2.6 </span>見出しのボーダーカラーを変更する</h2>
+<p>テーマを指定するようなオプションはないので、styles.scss内でスタイルを指定します。</p>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-7-1" id="mkdocs-with-pdf/:__codelineno-7-1" name="__codelineno-7-1"></a><span class="nv">$mainColor</span><span class="o">:</span><span class="w"> </span><span class="mh">#177e7e</span><span class="p">;</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-2" id="mkdocs-with-pdf/:__codelineno-7-2" name="__codelineno-7-2"></a><span class="nv">$subColor</span><span class="o">:</span><span class="w"> </span><span class="nf">rgba</span><span class="p">(</span><span class="nv">$mainColor</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="mf">.85</span><span class="p">);</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-3" id="mkdocs-with-pdf/:__codelineno-7-3" name="__codelineno-7-3"></a>
+<a href="#mkdocs-with-pdf/:__codelineno-7-4" id="mkdocs-with-pdf/:__codelineno-7-4" name="__codelineno-7-4"></a><span class="nt">article</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-5" id="mkdocs-with-pdf/:__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">    </span><span class="nt">h1</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-6" id="mkdocs-with-pdf/:__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">        </span><span class="nt">border-bottom</span><span class="nd">:</span><span class="w"> </span><span class="nt">2px</span><span class="w"> </span><span class="nt">solid</span><span class="w"> </span><span class="err">$</span><span class="nt">mainColor</span><span class="w"> </span><span class="o">!</span><span class="nt">important</span><span class="o">;</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-7" id="mkdocs-with-pdf/:__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-8" id="mkdocs-with-pdf/:__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">    </span><span class="nt">h2</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-9" id="mkdocs-with-pdf/:__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">        </span><span class="nt">border-bottom</span><span class="nd">:</span><span class="w"> </span><span class="nt">1px</span><span class="w"> </span><span class="nt">solid</span><span class="w"> </span><span class="err">$</span><span class="nt">subColor</span><span class="w"> </span><span class="o">!</span><span class="nt">important</span><span class="o">;</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-10" id="mkdocs-with-pdf/:__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-11" id="mkdocs-with-pdf/:__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">    </span><span class="nt">h3</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-12" id="mkdocs-with-pdf/:__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">        </span><span class="nt">border-bottom</span><span class="nd">:</span><span class="w"> </span><span class="nt">0</span><span class="nc">.5px</span><span class="w"> </span><span class="nt">solid</span><span class="w"> </span><span class="nn">#eee</span><span class="o">;</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-13" id="mkdocs-with-pdf/:__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-14" id="mkdocs-with-pdf/:__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">    </span><span class="nt">h1</span><span class="o">&gt;</span><span class="nc">.pdf-order</span><span class="o">,</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-15" id="mkdocs-with-pdf/:__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">    </span><span class="nt">h2</span><span class="o">&gt;</span><span class="nc">.pdf-order</span><span class="o">,</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-16" id="mkdocs-with-pdf/:__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">    </span><span class="nt">h3</span><span class="o">&gt;</span><span class="nc">.pdf-order</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-17" id="mkdocs-with-pdf/:__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">        </span><span class="nt">padding-left</span><span class="nd">:</span><span class="w"> </span><span class="nt">6px</span><span class="o">;</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-18" id="mkdocs-with-pdf/:__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-19" id="mkdocs-with-pdf/:__codelineno-7-19" name="__codelineno-7-19"></a><span class="p">}</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-20" id="mkdocs-with-pdf/:__codelineno-7-20" name="__codelineno-7-20"></a>
+<a href="#mkdocs-with-pdf/:__codelineno-7-21" id="mkdocs-with-pdf/:__codelineno-7-21" name="__codelineno-7-21"></a><span class="nc">.pdf-order</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-22" id="mkdocs-with-pdf/:__codelineno-7-22" name="__codelineno-7-22"></a><span class="w">    </span><span class="nt">color</span><span class="nd">:</span><span class="w"> </span><span class="err">$</span><span class="nt">mainColor</span><span class="w"> </span><span class="o">!</span><span class="nt">important</span><span class="o">;</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-7-23" id="mkdocs-with-pdf/:__codelineno-7-23" name="__codelineno-7-23"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-09-00-45-21.png" style=""/></p>
+<h2 id="mkdocs-with-pdf/:_6"><span class="pdf-order">2.7 </span>目次へ出力する見出しレベルを指定する</h2>
+<p>目次へ出力する見出しのレベルを指定することができます。</p>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-8-1" id="mkdocs-with-pdf/:__codelineno-8-1" name="__codelineno-8-1"></a><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-8-2" id="mkdocs-with-pdf/:__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">with-pdf</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-8-3" id="mkdocs-with-pdf/:__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">        </span><span class="nt">toc_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+</code></pre></div>
+<p><code>toc_level: 3</code>にすることで、見出しレベルが３（<code>###</code>）の項まで目次へ出力されます。</p>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-11-11-56-03.png" style=""/></p>
+<h2 id="mkdocs-with-pdf/:pdfhtml"><span class="pdf-order">2.8 </span>PDF出力用のHTMLを確認する</h2>
+<p>スタイルを拡張する際、要素の構造や、属性等確認したい場合があります。
+オプションを<code>debug_html: true</code>とすることで、PDF出力用のHTMLがログ出力されるようになります。</p>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-9-1" id="mkdocs-with-pdf/:__codelineno-9-1" name="__codelineno-9-1"></a><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-9-2" id="mkdocs-with-pdf/:__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">with-pdf</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-9-3" id="mkdocs-with-pdf/:__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">        </span><span class="nt">debug_html</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+</code></pre></div>
+<h2 id="mkdocs-with-pdf/:2"><span class="pdf-order">2.9 </span>2カラム構成で出力する</h2>
+<p>２カラム構成で出力する見出しレベルを指定することで、そのレベル以下は２カラムで出力されるようになります。</p>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-10-1" id="mkdocs-with-pdf/:__codelineno-10-1" name="__codelineno-10-1"></a><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-10-2" id="mkdocs-with-pdf/:__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">with-pdf</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-10-3" id="mkdocs-with-pdf/:__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">      </span><span class="nt">two_columns_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+</code></pre></div>
+<section class="md-typeset two-columns"><h3 id="mkdocs-with-pdf/:material-for-mkdocs"><span class="pdf-order">2.9.1 </span>Material for MkDocsのサポートブラウザーを確認する</h3>
+<p>この項は、見出しレベルが３（<code>###</code>）なので、２カラム構成で出力されます。</p>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-09-19-18-49.png" style=""/></p>
+<hr/>
+<p>Material for MkDocsの製品サイトへアクセスします。</p>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-09-19-13-06.png" style=""/></p>
+<div class="triangle"></div>
+<p>Getting startedをクリックします。</p>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-09-19-13-39.png" style=""/></p>
+<div class="triangle"></div>
+<p>左側のメニューからBrowser supportへ移動します。</p>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-09-19-14-39.png" style=""/></p>
+<div class="triangle"></div>
+<p>対応ブラウザーと各バージョンを確認します。</p>
+<p><img alt="" src="file:///mnt/c/Users/tryos/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/GitHub/mkdocs-example/example-site/site/img/2022-09-09-19-15-30.png" style=""/></p>
+<hr/>
+<p>こんな感じのちょっとしたフローは２カラム構成のほうが無駄なスペースを消費せず見やすい。</p>
+</section><h2 id="mkdocs-with-pdf/:pdf_1"><span class="pdf-order">2.10 </span>特定のページをPDF出力対象から除外する</h2>
+<p>オプションで、除外したいファイル/ディレクトリを指定します。</p>
+<p>MkDocsのオプションで<code>use_directory_urls: false</code>としている場合</p>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-11-1" id="mkdocs-with-pdf/:__codelineno-11-1" name="__codelineno-11-1"></a><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-11-2" id="mkdocs-with-pdf/:__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">with-pdf</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-11-3" id="mkdocs-with-pdf/:__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">      </span><span class="nt">exclude_pages</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-11-4" id="mkdocs-with-pdf/:__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'mkdocks-with-pdf-output.html'</span><span class="w"></span>
+</code></pre></div>
+<p>MkDocsのオプションで<code>use_directory_urls: true</code>としている場合</p>
+<div class="highlight"><pre><span></span><code><a href="#mkdocs-with-pdf/:__codelineno-12-1" id="mkdocs-with-pdf/:__codelineno-12-1" name="__codelineno-12-1"></a><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-12-2" id="mkdocs-with-pdf/:__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">with-pdf</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-12-3" id="mkdocs-with-pdf/:__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">      </span><span class="nt">exclude_pages</span><span class="p">:</span><span class="w"></span>
+<a href="#mkdocs-with-pdf/:__codelineno-12-4" id="mkdocs-with-pdf/:__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'mkdocks-with-pdf-output/'</span><span class="w"></span>
+</code></pre></div>
+</article></body></html>

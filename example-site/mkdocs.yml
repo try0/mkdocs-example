@@ -18,10 +18,13 @@ plugins:
       # cover_subtitle: SUBTITLE TEXT
       custom_template_path: custom_template
       debug_html: false
+      show_anchors: false
       toc_title: 目次
+      toc_level: 3
       two_columns_level: 3
       exclude_pages:
         - mkdocs-with-pdf-output.html
+
 
 markdown_extensions:
   - pymdownx.highlight:
