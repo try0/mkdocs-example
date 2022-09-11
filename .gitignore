@@ -127,3 +127,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+example-site/debug_pdf_print.html
