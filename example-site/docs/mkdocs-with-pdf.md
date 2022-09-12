@@ -373,8 +373,8 @@ def pre_js_render(soup: BeautifulSoup, logger: logging) -> BeautifulSoup:
 def pre_pdf_render(soup: BeautifulSoup, logger: logging) -> BeautifulSoup:
 ```
 
-pre_pdf_renderを拡張し、PDFとして出力する要素の追加を試してみます。  
-以下処理は裏表紙のフッターへ、ビルド時の情報を出力しています。
+pre_pdf_renderを実装し、PDFとして出力する要素の改変を行うことができます。  
+以下処理では裏表紙のフッターへ、ビルド時の情報を追加しています。
 
 ```python
 import logging
