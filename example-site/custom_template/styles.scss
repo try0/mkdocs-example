@@ -45,6 +45,10 @@ img {
     display: none;
 }
 
+section.two-columns {
+    column-rule: solid 1px #eee;
+}
+
 // 表紙
 .cover-page {
     height: 100%;
