@@ -403,7 +403,7 @@ def pre_pdf_render(soup: BeautifulSoup, logger: logging) -> BeautifulSoup:
         el_output_info.append(el_python_version)
 
         # 出力日時
-        el_current_dt = el_python_version = soup.new_tag('div')
+        el_current_dt = soup.new_tag('div')
         el_current_dt.string = '出力日時: ' + datetime.datetime.now().strftime('%Y年%m月%d日 %H:%M:%S')
         el_output_info.append(el_current_dt)
 
