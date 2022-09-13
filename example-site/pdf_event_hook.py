@@ -1,9 +1,12 @@
 import logging
 import sys
 import datetime
+import importlib.metadata
 
 from bs4 import BeautifulSoup
 from mkdocs.structure.pages import Page
+
+
 
 
 # def inject_link(html: str, href: str,
@@ -67,8 +70,18 @@ def pre_pdf_render(soup: BeautifulSoup, logger: logging) -> BeautifulSoup:
         el_python_version.string = 'Python version: ' + sys.version
         el_output_info.append(el_python_version)
 
+        # mkdocs バージョン
+        el_mkdocs_version = soup.new_tag('div')
+        el_mkdocs_version.string = 'MkDocs version: ' + importlib.metadata.version('mkdocs')
+        el_output_info.append(el_mkdocs_version)
+
+        # mkdocs-with-pdf バージョン
+        el_mkdocs_with_pdf_version = soup.new_tag('div')
+        el_mkdocs_with_pdf_version.string = 'PDF Generate Plugin for MkDocs (mkdocs-with-pdf) version: ' + importlib.metadata.version('mkdocs-with-pdf')
+        el_output_info.append(el_mkdocs_with_pdf_version)
+
         # 出力日時
-        el_current_dt = el_python_version = soup.new_tag('div')
+        el_current_dt = soup.new_tag('div')
         el_current_dt.string = '出力日時: ' + datetime.datetime.now().strftime('%Y年%m月%d日 %H:%M:%S')
         el_output_info.append(el_current_dt)
 
