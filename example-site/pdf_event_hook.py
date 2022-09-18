@@ -6,6 +6,7 @@ import importlib.metadata
 from bs4 import BeautifulSoup
 from mkdocs.structure.pages import Page
 
+from weasyprint import HTML, urls
 
 
 
@@ -74,6 +75,11 @@ def pre_pdf_render(soup: BeautifulSoup, logger: logging) -> BeautifulSoup:
         el_mkdocs_version = soup.new_tag('div')
         el_mkdocs_version.string = 'MkDocs version: ' + importlib.metadata.version('mkdocs')
         el_output_info.append(el_mkdocs_version)
+
+        # mkdocs-material バージョン
+        el_mkdocs_material_version = soup.new_tag('div')
+        el_mkdocs_material_version.string = 'Material for MkDocs (mkdocs-material) version: ' + importlib.metadata.version('mkdocs-material')
+        el_output_info.append(el_mkdocs_material_version)
 
         # mkdocs-with-pdf バージョン
         el_mkdocs_with_pdf_version = soup.new_tag('div')
