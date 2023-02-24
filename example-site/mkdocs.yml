@@ -24,6 +24,7 @@ plugins:
       toc_level: 3
       two_columns_level: 3
       exclude_pages:
+        - index.html
         - mkdocs-with-pdf-output.html
   - toc-md:
       toc_page_title: 目次
