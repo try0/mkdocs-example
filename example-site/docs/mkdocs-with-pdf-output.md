@@ -1,4 +1,10 @@
-# mkdocs-with-pdfで出力したPDF
+---
+toc_md_description: プラグインで実際に出力したPDFです。
+---
+
+# 出力サンプル
+
+## mkdocs-with-pdfで出力したPDF
 
 プラグインで実際に出力したPDFです。
 

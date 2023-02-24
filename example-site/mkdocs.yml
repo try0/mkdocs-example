@@ -25,6 +25,16 @@ plugins:
       two_columns_level: 3
       exclude_pages:
         - mkdocs-with-pdf-output.html
+  - toc-md:
+      toc_page_title: 目次
+      toc_page_description: PDF Generate Plugin for MkDocsを使用して、ドキュメントをPDFとして出力します。
+      header_level: 3
+      pickup_description_meta: false
+      pickup_description_class: false
+      output_path: index.md
+      output_log: true
+      ignore_page_pattern: index.md
+      remove_navigation_page_pattern: index.md
 
 markdown_extensions:
   - pymdownx.highlight:

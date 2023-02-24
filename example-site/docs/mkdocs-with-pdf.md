@@ -1,3 +1,7 @@
+---
+toc_md_description: mkdocs-with-pdfの使用方法。
+---
+
 # mkdocs-with-pdf
 
 [mkdocs-with-pdf](https://github.com/orzih/mkdocs-with-pdf)を使用して、ドキュメントをPDFとして出力することができます。
