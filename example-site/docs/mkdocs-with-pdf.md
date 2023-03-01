@@ -69,13 +69,29 @@ plugins:
 ![](img/2022-09-09-00-09-42.png)
 
 
-デフォルトで余白が設定されているので、帯状に塗りつぶしたい場合、`margin`をマイナスに設定して描画領域を調整します。
+デフォルトで余白が設定されているので、1ページ目のみ`margin`を0に設定して描画領域を調整します。
+
+cover.html
 
 ```html
 <!-- 表紙 -->
-<div style="background-color: steelblue; padding: 0.5em 0.5em 0.5em 3.5em; margin: 0 -3em;">
+<div class="cover-page">
     <h1 style="color: white;">MKDocs</h1>
 </div>
+```
+
+styles.scss
+
+```css
+.cover-page {
+    background-color: steelblue;
+    padding: 0.5em 0.5em 0.5em 3.5em;
+}
+
+@page:first {
+    margin: 0px;
+}
+
 ```
 
 ![](img/2022-09-09-00-18-15.png)
