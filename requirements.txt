@@ -1,0 +1,5 @@
+mkdocs==1.4.2
+mkdocs-material==9.0.15
+mkdocs-material-extensions==1.1
+mkdocs-toc-md==0.0.4
+mkdocs-with-pdf==0.9.3
